@@ -9,11 +9,8 @@ THREEx.Text	= function(text, options){
 		height		: 0.4,
 	}
 
-	// create the tGeometry
 	var geometry	= new THREE.TextGeometry(text, options)
 
-	// center the geometry
-	// - THREE.TextGeometry isnt centered for unknown reasons. all other geometries are centered
 	geometry.computeBoundingBox();
 	var center	= new THREE.Vector3();
 	center.x	= (geometry.boundingBox.max.x - geometry.boundingBox.min.x) / 2
@@ -23,7 +20,6 @@ THREEx.Text	= function(text, options){
 		vertex.sub(center)
 	})
 	
-	// create a mesh with it
 	var material	= new THREE.MeshNormalMaterial()
 	var mesh	= new THREE.Mesh(geometry, material)
 	// return mesh
